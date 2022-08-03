@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "../Admin/Admin";
+import ContactForm from "../ContactForm/ContactForm";
 import Gallery from "../Gallery/Gallery";
 import Notices from "../Notices/Notices";
 
@@ -7,8 +7,8 @@ const Homepage = () => {
   return (
     <>
       <Notices></Notices>
-      <Admin></Admin>
       <Gallery></Gallery>
+      <ContactForm></ContactForm>
     </>
   );
 };
