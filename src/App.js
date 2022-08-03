@@ -3,6 +3,8 @@ import "tw-elements";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import Header from "./Components/Header/Header";
 import Homepage from "./Components/Homepage/Homepage";
+import Login from "./Components/Login/Login";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -10,7 +12,15 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Homepage></Homepage>}></Route>
-        <Route path="/admin-panel" element={<AdminPanel></AdminPanel>}></Route>
+        <Route
+          path="/admin-panel"
+          element={
+            <RequireAuth>
+              <AdminPanel></AdminPanel>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
       </Routes>
     </>
   );
