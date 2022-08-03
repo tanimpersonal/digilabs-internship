@@ -11,7 +11,7 @@ const Notices = () => {
   }, []);
 
   return (
-    <>
+    <div className="w-[90%] mx-auto">
       <div className="board">
         <h1 className="text-3xl">Notice Board</h1>
       </div>
@@ -20,11 +20,13 @@ const Notices = () => {
           <h1 className="text-5xl">Loading</h1>
         </div>
       )}
-      {notices &&
-        notices.map((notice) => (
-          <SingleNotice key={notice._id} notice={notice}></SingleNotice>
-        ))}
-    </>
+      <div className="notice">
+        {notices &&
+          notices.map((notice) => (
+            <SingleNotice key={notice._id} notice={notice}></SingleNotice>
+          ))}
+      </div>
+    </div>
   );
 };
 

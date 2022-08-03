@@ -6,7 +6,7 @@ import NoticeAdmin from "../NoticeAdmin/NoticeAdmin";
 
 const AdminPanel = () => {
   return (
-    <div>
+    <div className="w-[90%] mx-auto">
       <NoticeAdmin></NoticeAdmin>
       <GalleryAdmin></GalleryAdmin>
       <Admin></Admin>

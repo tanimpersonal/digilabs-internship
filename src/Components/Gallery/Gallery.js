@@ -17,7 +17,7 @@ const Gallery = () => {
           <h1>Loading</h1>
         </div>
       )}
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 gap-2 w-[90%] mx-auto">
         {pictures &&
           pictures.map((picture) => (
             <SingleGallery key={picture._id} image={picture}></SingleGallery>

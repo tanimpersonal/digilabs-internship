@@ -10,7 +10,7 @@ const NoticeAdmin = () => {
     dispatch(fetchNotices());
   }, []);
   return (
-    <div>
+    <div className="my-5">
       <h1 className="text-3xl">All Notices</h1>
       {notices.map((notice) => (
         <SingleNoticeAdmin key={notice._id} notice={notice}></SingleNoticeAdmin>

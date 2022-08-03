@@ -11,8 +11,8 @@ const ContactView = () => {
   }, []);
   console.log(contacts);
   return (
-    <div>
-      <h1>Contacted Data</h1>
+    <div className="my-5">
+      <h1 className="text-3xl">Contacted Data</h1>
       {isLoading && <h1>Loading</h1>}
       {contacts &&
         contacts.map((contact) => (
