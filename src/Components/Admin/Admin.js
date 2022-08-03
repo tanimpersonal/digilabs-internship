@@ -19,7 +19,11 @@ const Admin = () => {
         "https://api.imgbb.com/1/upload?key=e8b0dad22118468cdad63c218aef6c48",
         formData
       )
-      .then(async (res) => {});
+      .then((res) => {
+        const displayUrl = res.data.data.display_url;
+        console.log(displayUrl);
+        axios.post("http://localhost:5000/picture", { displayUrl });
+      });
   };
   return (
     <div>

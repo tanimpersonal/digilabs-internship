@@ -1,5 +1,6 @@
 import React from "react";
 import Admin from "../Admin/Admin";
+import Gallery from "../Gallery/Gallery";
 import Notices from "../Notices/Notices";
 
 const Homepage = () => {
@@ -7,6 +8,7 @@ const Homepage = () => {
     <>
       <Notices></Notices>
       <Admin></Admin>
+      <Gallery></Gallery>
     </>
   );
 };
