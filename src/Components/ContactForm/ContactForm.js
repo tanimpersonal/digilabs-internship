@@ -10,7 +10,7 @@ const ContactForm = () => {
   } = useForm();
   const onSubmit = (data) => {
     const { name, email, number } = data;
-    axios.post("http://localhost:5000/contactData", {
+    axios.post("https://digilabs.herokuapp.com/contactData", {
       name,
       email,
       number,

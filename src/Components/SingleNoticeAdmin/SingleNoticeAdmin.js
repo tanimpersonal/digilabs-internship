@@ -1,17 +1,32 @@
 import axios from "axios";
-import React from "react";
+import React, { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { fetchNotices } from "../../App/Features/DataFetch/dataFetchSlice";
-import CustomModal from "../CustomModal/CustomModal";
 
 const SingleNoticeAdmin = ({ notice }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { title, body, time, _id } = notice;
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
-  const handleDelete = (id) => {
+
+  const updateTitle = useRef();
+  const updateBody = useRef();
+  const updateTime = useRef();
+
+  const handleEdit = (id) => {
+    id.preventDefault();
     console.log(id);
-    axios
-      .delete(`http://localhost:5000/notices/${id}`)
-      .then(dispatch(fetchNotices()));
+    const title = axios.put("");
+  };
+  const handleDelete = async (id) => {
+    console.log(id);
+    await axios.delete(`https://digilabs.herokuapp.com/notices/${id}`);
+    await dispatch(fetchNotices());
   };
   return (
     <div className="my-5">
@@ -24,14 +39,23 @@ const SingleNoticeAdmin = ({ notice }) => {
       <div className="time">{time}</div>
       <div className="btn flex gap-5">
         <button
+          onClick={() => setEdit(true)}
           type="button"
           className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModalLong"
         >
           Edit
         </button>
-        <CustomModal id={_id}></CustomModal>
+        {edit && (
+          <div>
+            <form onSubmit={() => handleEdit(_id)}>
+              <input type="text" placeholder="title" ref={updateTitle} />
+              <input type="text" placeholder="body" ref={updateBody} />
+              <input type="time" placeholder="time" ref={updateTime} />
+
+              <input type="submit" />
+            </form>
+          </div>
+        )}
         <div
           className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out hover:cursor-pointer"
           onClick={() => handleDelete(_id)}

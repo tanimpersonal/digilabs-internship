@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { galleryFetch } from "../../App/Features/GalleryFetch/galleryFetchSlice";
 
 const Admin = () => {
   const [image, setImage] = useState([]);
-
+  const dispatch = useDispatch();
   const imageInput = useRef("");
   const handleChange = () => {
     // console.log(imageInput.current.files[0]);
@@ -19,10 +21,13 @@ const Admin = () => {
         "https://api.imgbb.com/1/upload?key=e8b0dad22118468cdad63c218aef6c48",
         formData
       )
-      .then((res) => {
+      .then(async (res) => {
         const displayUrl = res.data.data.display_url;
-        console.log(displayUrl);
-        axios.post("http://localhost:5000/picture", { displayUrl });
+
+        await axios.post("https://digilabs.herokuapp.com/picture", {
+          displayUrl,
+        });
+        await dispatch(galleryFetch());
       });
   };
   return (

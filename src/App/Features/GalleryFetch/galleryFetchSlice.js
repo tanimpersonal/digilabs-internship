@@ -3,7 +3,7 @@ import axios from "axios";
 export const galleryFetch = createAsyncThunk(
   "gallery/galleryFetch",
   async () => {
-    const res = await axios.get("http://localhost:5000/picture");
+    const res = await axios.get("https://digilabs.herokuapp.com/picture");
     return res.data;
   }
 );

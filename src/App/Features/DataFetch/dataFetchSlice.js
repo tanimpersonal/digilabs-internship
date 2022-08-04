@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-const url = "http://localhost:5000/notices";
+const url = "https://digilabs.herokuapp.com/notices";
 export const fetchNotices = createAsyncThunk("data/fetchNotices", async () => {
   const res = await axios.get(url);
   return res.data;

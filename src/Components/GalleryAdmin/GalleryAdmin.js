@@ -9,10 +9,9 @@ const GalleryAdmin = () => {
   useEffect(() => {
     dispatch(galleryFetch());
   }, []);
-  const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:5000/picture/${id}`)
-      .then(dispatch(galleryFetch()));
+  const handleDelete = async (id) => {
+    await axios.delete(`https://digilabs.herokuapp.com/picture/${id}`);
+    await dispatch(galleryFetch());
   };
   return (
     <div className="grid grid-cols-5 gap-2 my-5">

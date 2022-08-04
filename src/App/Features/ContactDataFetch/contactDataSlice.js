@@ -3,7 +3,7 @@ import axios from "axios";
 export const contactFetch = createAsyncThunk(
   "contact/contactFetch",
   async () => {
-    const res = await axios.get("http://localhost:5000/contactData");
+    const res = await axios.get("https://digilabs.herokuapp.com/contactData");
     return res.data;
   }
 );
