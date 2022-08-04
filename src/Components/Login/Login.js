@@ -5,10 +5,14 @@ import auth from "../../firebase.init";
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
   const email = useRef();
   const pass = useRef();
   let navigate = useNavigate();
   let location = useLocation();
+  if (loading) {
+    return <p>Loading</p>;
+  }
   let from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
@@ -16,9 +20,7 @@ const Login = () => {
 
     console.log(user);
   };
-  if (loading) {
-    return <p>Loading</p>;
-  }
+
   navigate(from, { replace: true });
   return (
     <div>
