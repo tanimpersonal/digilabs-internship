@@ -21,7 +21,7 @@ const SingleNoticeAdmin = ({ notice }) => {
   const handleEdit = async (event, _id) => {
     event.preventDefault();
     console.log(_id);
-    await axios.put(`http://localhost:5000/notices/${_id}`, {
+    await axios.put(`https://digilabs.herokuapp.com/notices/${_id}`, {
       title: updateTitle.current.value,
       body: updateBody.current.value,
       time: updateTime.current.value,

@@ -17,7 +17,7 @@ const NoticeAdmin = () => {
   const handleNewNotice = async (event) => {
     event.preventDefault();
     setNotice(true);
-    await axios.post("http://localhost:5000/notices", {
+    await axios.post("https://digilabs.herokuapp.com/notices", {
       title: title.current.value,
       body: body.current.value,
       time: time.current.value,
